@@ -1,4 +1,5 @@
 Checks: '*,
+         -llvm-header-guard,
          -fuchsia-*,
          -cert-err58-cpp,
          -cppcoreguidelines-owning-memory,
