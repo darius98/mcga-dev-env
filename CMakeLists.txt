@@ -8,9 +8,7 @@ set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
 include_directories(cli/include)
 include_directories(proc/include)
-include_directories(test/kktest/core/include)
-include_directories(test/kktest/extensions/death/include)
-include_directories(test/kktest/extensions/matchers/include)
+include_directories(test/include)
 include_directories(threading/include)
 
 add_subdirectory(threading)
