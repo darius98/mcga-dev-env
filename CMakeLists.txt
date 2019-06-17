@@ -6,6 +6,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
+include_directories(third_party/evpp)
+
 include_directories(cli/include)
 include_directories(matchers/include)
 include_directories(proc/include)

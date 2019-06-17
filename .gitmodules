@@ -1,0 +1,3 @@
+[submodule "third_party/evpp"]
+	path = third_party/evpp
+	url = https://github.com/Qihoo360/evpp
