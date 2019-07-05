@@ -15,6 +15,7 @@ include_directories(test/include)
 include_directories(threading/include)
 
 add_subdirectory(cli)
+add_subdirectory(hpc)
 add_subdirectory(matchers)
 add_subdirectory(proc)
 add_subdirectory(test)

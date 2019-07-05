@@ -1,4 +1,5 @@
 cli/
+hpc/
 matchers/
 proc/
 test/
