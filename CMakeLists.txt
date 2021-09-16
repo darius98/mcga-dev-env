@@ -7,6 +7,9 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
+add_compile_options(-fsanitize=address)
+add_link_options(-fsanitize=address)
+
 include_directories(third_party/evpp)
 include_directories(cli/include)
 include_directories(matchers/include)
@@ -28,3 +31,13 @@ add_subdirectory(test)
 
 set(MCGA_threading_tests ON)
 add_subdirectory(threading)
+
+enable_testing()
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure)
+add_dependencies(check mcga_cli_test mcga_matchers_test mcga_proc_test mcga_threading_test)
+get_property(mcga_test_check_deps TARGET mcga_test_check PROPERTY MANUALLY_ADDED_DEPENDENCIES)
+add_dependencies(check ${mcga_test_check_deps})
+add_test(NAME mcga::cli COMMAND mcga_cli_test)
+add_test(NAME mcga::matchers COMMAND mcga_matchers_test)
+add_test(NAME mcga::proc COMMAND mcga_proc_test)
+add_test(NAME mcga::threading COMMAND mcga_threading_test)
