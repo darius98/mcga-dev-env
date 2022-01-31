@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  ubuntu:
+    image: darius98/ubuntu
+    build:
+      context: .
+      dockerfile: ubuntu.Dockerfile
+
+  build-clang:
+    depends_on: [ubuntu]
+    image: darius98/ubuntu
+    volumes: [..:/code]
+    environment: [CC=clang,CXX=clang++]
+    command: /code/docker/build.sh clang
+
+  build-gcc:
+    depends_on: [ubuntu]
+    image: darius98/ubuntu
+    volumes: [..:/code]
+    environment: [CC=gcc,CXX=g++]
+    command: /code/docker/build.sh gcc

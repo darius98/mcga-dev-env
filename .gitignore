@@ -4,8 +4,6 @@ matchers/
 proc/
 test/
 threading/
-cmake-build-*/
-build/
 .DS_Store
 .idea/
 .build/
