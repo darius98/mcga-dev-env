@@ -8,8 +8,8 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS TRUE)
 set(CMAKE_POSITION_INDEPENDENT_CODE TRUE)
 set(CMAKE_CXX_VISIBILITY_PRESET hidden)
 
-add_compile_options(-fsanitize=address)
-add_link_options(-fsanitize=address)
+set(SANITIZER_COMPILE_OPTIONS -fsanitize=address,undefined -fno-sanitize-recover=undefined)
+set(SANITIZER_LINK_OPTIONS -fsanitize=address,undefined)
 
 set(CLANG_WARNINGS
         -Wall
