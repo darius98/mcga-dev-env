@@ -73,6 +73,9 @@ set(MCGA_threading_benchmark_against_evpp ON)
 set(MCGA_threading_tests ON)
 add_subdirectory(threading)
 
+set(MCGA_meta_tests ON)
+add_subdirectory(meta)
+
 enable_testing()
 add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure)
 add_dependencies(check mcga_cli_test mcga_matchers_test mcga_proc_test mcga_threading_test)

@@ -1,6 +1,7 @@
 cli/
 hpc/
 matchers/
+meta/
 proc/
 test/
 threading/
