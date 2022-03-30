@@ -12,6 +12,7 @@ set(SANITIZER_COMPILE_OPTIONS -fsanitize=address,undefined -fno-sanitize-recover
 set(SANITIZER_LINK_OPTIONS -fsanitize=address,undefined)
 
 set(CLANG_WARNINGS
+        -Werror
         -Wall
         -Wextra # reasonable and standard
         -Wshadow # warn the user if a variable declaration shadows one from a parent context
@@ -23,7 +24,11 @@ set(CLANG_WARNINGS
         -Woverloaded-virtual # warn if you overload (not override) a virtual function
         -Wpedantic # warn if non-standard C++ is used
         -Wconversion # warn on type conversions that may lose data
-        -Wsign-conversion # warn on sign conversions
+
+#        -Wsign-conversion # warn on sign conversions
+        -Wno-sign-conversion  # TODO: Re-enable at some point.
+        -Wno-sign-compare  # TODO: Re-enable at some point.
+
         -Wnull-dereference # warn if a null dereference is detected
         -Wdouble-promotion # warn if float is implicit promoted to double
         -Wformat=2 # warn on security issues around functions that format output (ie printf)
@@ -39,9 +44,9 @@ set(GCC_WARNINGS
         )
 
 if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
-    add_compile_options(${PROJECT_WARNINGS} -Werror)
+    add_compile_options(${CLANG_WARNINGS})
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-    add_compile_options(${PROJECT_WARNINGS} -Werror)
+    add_compile_options(${GCC_WARNINGS})
 else()
     message(AUTHOR_WARNING "No compiler warnings set for '${CMAKE_CXX_COMPILER_ID}' compiler.")
 endif()
