@@ -4,27 +4,27 @@
 
 #define GOOGLE_STRIP_LOG 2
 
-namespace blink {
+namespace fakelog {
 
 struct NullStream {};
 
 constexpr NullStream nullStream;
 
 template<class T>
-const NullStream& operator<<(const NullStream& nullStream, const T&) {
-    return nullStream;
+const NullStream& operator<<(const NullStream& ns, const T&) {
+    return ns;
 }
 
 template<class T>
-const NullStream& operator<<(const NullStream& nullStream, T[]) {
-    return nullStream;
+const NullStream& operator<<(const NullStream& ns, T[]) {
+    return ns;
 }
 
 template<class T>
-const NullStream& operator<<(const NullStream& nullStream, const T*) {
-    return nullStream;
+const NullStream& operator<<(const NullStream& ns, const T*) {
+    return ns;
 }
 
-}  // namespace blink
+}  // namespace fakelog
 
-#define LOG(level) blink::nullStream
+#define LOG(level) fakelog::nullStream
